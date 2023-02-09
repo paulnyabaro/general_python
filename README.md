@@ -1,1 +1,1 @@
-# general_python
+# News paper app
