@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit {{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="py-4 py-lg-5">
+    <div class="container">
+        <h1>Edit {{ article.title }}</h1>
+        <form action="">
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
