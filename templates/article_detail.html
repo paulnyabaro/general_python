@@ -6,7 +6,12 @@
 <div class="py-4 py-lg-5">
     <div class="container">
         <h1>{{ article.title }}</h1>
-        <p class="text-muted small">By {{ article.author }} | {{ article.date }} <a href="{% url 'article_edit' article.id %}">Edit</a> | <a class="text-danger" href="{% url 'article_delete' article.id %}">Delete</a></p>
+        <p class="text-muted small">By {{ article.author }} | {{ article.date }} 
+            {% if user.is_authenticated %}
+            <a href="{% url 'article_edit' article.id %}">Edit</a> |
+            <a class="text-danger" href="{% url 'article_delete' article.id %}">Delete</a>
+            {% endif %}
+        </p>
         {{ article.body }}
         <br>
         
