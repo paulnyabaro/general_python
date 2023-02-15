@@ -17,7 +17,7 @@
                         {{ article.body }}
                     </div>
                     <div class="card-footer text-center text-muted">
-                        <a href="">Edit</a> | <a href="">Delete</a> | <a href="{% url 'article_detail' article.id %}">View</a>
+                        <a href="{% url 'article_edit' article.id %}">Edit</a> | <a href="{% url 'article_delete' article.id %}">Delete</a> | <a href="{% url 'article_detail' article.id %}">View</a>
                     </div>
                 </div>
             </div>
