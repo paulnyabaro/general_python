@@ -3,7 +3,8 @@ from .models import Article, Comment
 
 
 
-class CommentInline(admin.StackedInline):
+# class CommentInline(admin.StackedInline):
+class CommentInline(admin.TabularInline):
     model = Comment
     # extra = 0 # Limiting the extra fields
 
