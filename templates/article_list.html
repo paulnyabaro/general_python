@@ -12,6 +12,8 @@
                     <div class="card-header">
                         <span class="fw-bold">{{ article.title }}</span> &middot;
                         <span class="text-muted">By {{ article.author }} | {{ article.date }}</span>
+                        <span class="mx-2">&middot;</span>
+                        <span class="text-muted">{{ article.comment_set.all.count }} <i class="bi bi-chat-dots"></i></span>
                     </div>
                     <div class="card-body">
                         {{ article.body }}
