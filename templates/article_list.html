@@ -17,7 +17,7 @@
                         {{ article.body }}
                     </div>
                     <div class="card-footer text-center text-muted">
-                        {% if user.is_authenticated %}
+                        {% if user.is_authenticated and user == article.author %}
                         <a href="{% url 'article_edit' article.id %}">Edit</a> | 
                         <a class="text-danger" href="{% url 'article_delete' article.id %}">Delete</a> | 
                         {% endif %}
