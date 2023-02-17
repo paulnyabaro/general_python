@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from .forms import CommentForm
+from django.views import View
 
 from .models import Article
 
@@ -42,7 +43,7 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-class ArticleDetailView(LoginRequiredMixin, DetailView):
+class CommentGet(DetailView):
     model = Article
     template_name = 'article_detail.html'
 
@@ -50,3 +51,17 @@ class ArticleDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['form'] = CommentForm()
         return context
+
+class CommentPost():
+    pass
+
+class ArticleDetailView(LoginRequiredMixin, DetailView):
+    def get(self, request, *args, **kwargs):
+        view = CommentForm.as_view()
+        return view(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        view = CommentForm.as_view()
+        return view(request, *args, **kwargs)
+
+
