@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
@@ -32,9 +34,8 @@
         <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit">Save</button>
+            <button type="submit" class="btn btn-success">Save</button>
         </form>
-        <a href="" class="btn btn-success">+ Add comment</a>
         {% endif %}
     </div>
 </div>
