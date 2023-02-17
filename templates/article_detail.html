@@ -28,6 +28,12 @@
         {% endif %}
         {% if user.is_authenticated %}
         <hr>
+        <h4>Add comment</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit">Save</button>
+        </form>
         <a href="" class="btn btn-success">+ Add comment</a>
         {% endif %}
     </div>
