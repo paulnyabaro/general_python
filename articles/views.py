@@ -58,11 +58,11 @@ class CommentPost():
 
 class ArticleDetailView(LoginRequiredMixin, DetailView):
     def get(self, request, *args, **kwargs):
-        view = CommentForm.as_view()
+        view = CommentGet.as_view()
         return view(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        view = CommentForm.as_view()
+        view = CommentGet.as_view()
         return view(request, *args, **kwargs)
 
 class CommentPost(SingleObjectMixin, FormView):
