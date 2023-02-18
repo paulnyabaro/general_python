@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
+from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .forms import CommentForm
 from django.views import View
 
@@ -64,4 +65,11 @@ class ArticleDetailView(LoginRequiredMixin, DetailView):
         view = CommentForm.as_view()
         return view(request, *args, **kwargs)
 
+class CommentPost(SingleObjectMixin, FormView):
+    model = Article
+    form_class = CommentForm
+    template_name = 'article_detail.html'
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super().post(request,*args, **kwargs)
