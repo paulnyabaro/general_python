@@ -22,9 +22,9 @@ class ArticleListView(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'article_list.html'
 
-class ArticleDetailView(LoginRequiredMixin, DetailView):
-    model = Article
-    template_name = 'article_detail.html'
+# class ArticleDetailView(LoginRequiredMixin, DetailView):
+#     model = Article
+#     template_name = 'article_detail.html'
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
@@ -78,6 +78,6 @@ class ArticleDetailView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        view = CommentGet.as_view()
+        view = CommentPost.as_view()
         return view(request, *args, **kwargs)
 
