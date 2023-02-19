@@ -56,7 +56,7 @@ class CommentGet(DetailView):
 class CommentPost():
     pass
 
-class ArticleDetailView(LoginRequiredMixin, DetailView):
+class ArticleDetailView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         view = CommentGet.as_view()
         return view(request, *args, **kwargs)
