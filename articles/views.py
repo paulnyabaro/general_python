@@ -53,18 +53,6 @@ class CommentGet(DetailView):
         context['form'] = CommentForm()
         return context
 
-class CommentPost():
-    pass
-
-class ArticleDetailView(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        view = CommentGet.as_view()
-        return view(request, *args, **kwargs)
-    
-    def post(self, request, *args, **kwargs):
-        view = CommentGet.as_view()
-        return view(request, *args, **kwargs)
-
 class CommentPost(SingleObjectMixin, FormView):
     model = Article
     form_class = CommentForm
@@ -83,3 +71,13 @@ class CommentPost(SingleObjectMixin, FormView):
     def get_success_url(self):
         article = self.get_object()
         return reverse('article_detail', kwargs={'pk': article.pk})
+
+class ArticleDetailView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        view = CommentGet.as_view()
+        return view(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        view = CommentGet.as_view()
+        return view(request, *args, **kwargs)
+
